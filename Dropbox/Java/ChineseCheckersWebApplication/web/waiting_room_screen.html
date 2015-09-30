@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Waiting Room</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/ourCSS.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="script/jquery-2.1.4.min.js"></script>
+    </head>
+    <body background="resources/backgroundwood.png">
+        <header class="header">Welcome to the waiting room!</header>
+        <h1 id="currentNumOfPlayers"></h1>
+        <script>
+            var funcNumOfConnectedPlayers = "NumOfCurrentConnectedPlayers";
+            function ajaxNumOfConnectedPlayers() {
+                $.ajax({
+                    data: "funcName=" + funcNumOfConnectedPlayers,
+                    url: "WaitingRoomServlet",
+                    async: false,
+                    timeout: 2000,
+                    error: function () {
+                        console.error("Failed to send ajax");
+                    },
+                    success: function (numOfConnectedPlayers) {
+                        $("#currentNumOfPlayers").replaceWith("<h1 id=\"currentNumOfPlayers\">There are currently " + numOfConnectedPlayers + " connected players.</h1>");
+                    }
+                });
+            }
+        </script>
+        <h1 id="numOfPlayersLeft"></h1>
+        <script>
+            var funcNumOfPlayersLeft = "numOfPlayersLeft";
+            function ajaxNumOfPlayersLeft() {
+                $.ajax({
+                    data: "funcName=" + funcNumOfPlayersLeft,
+                    url: "WaitingRoomServlet",
+                    async: false,
+                    timeout: 2000,
+                    error: function () {
+                        console.error("Failed to send ajax");
+                    },
+                    success: function (PlayersLeft) {
+                        $("#numOfPlayersLeft").replaceWith("<h1 id=\"numOfPlayersLeft\">Waiting for " + PlayersLeft + " more players.</h1>");
+                    }
+                });
+            }
+        </script>
+
+        <script>
+            var funcPlayersNames = "PlayersNames";
+            function ajaxUsersList() {
+                $.ajax({
+                    data: "funcName=" + funcPlayersNames,
+                    url: "WaitingRoomServlet",
+                    async: false,
+                    timeout: 2000,
+                    error: function () {
+                        console.error("Failed to send ajax");
+                    },
+                    success: function (PlayersNames) {
+                        $("#playersName").replaceWith(PlayersNames);
+                    }
+                });
+            }
+        </script>
+
+        <script>
+            var funcStartGame = "startGame";
+            var toScreen = "out";
+            function ajaxStartGame() {
+                $.ajax({
+                    data: "funcName=" + funcStartGame,
+                    url: "WaitingRoomServlet",
+                    async: false,
+                    timeout: 2000,
+                    error: function () {
+                        console.error("Failed to send ajax");
+                    },
+                    success: function (URL) {
+                        if (URL !== "")
+                        {
+                            toScreen = "game_screen"
+                            window.location.href = URL;
+                        }
+                    }
+                });
+            }
+        </script>        
+
+        <script>
+            var refreshRate = 1000;
+            
+            $(function () {
+                //The users list is refreshed automatically every second
+                setInterval(ajaxNumOfConnectedPlayers, refreshRate);
+                setInterval(ajaxNumOfPlayersLeft, refreshRate);
+                setInterval(ajaxUsersList, refreshRate);
+                setInterval(ajaxStartGame, refreshRate);
+            });
+
+            $(window).unload(function () {
+                var funcName = "removeFromConnectedPlayers";
+                jQuery.ajax({
+                    data: "funcName=" + funcName + "&fromScreen=" + "waiting_room" + "&toScreen=" + toScreen,
+                    async: false,
+                    url: "GameManagerServlet",
+                    timeout: 2000,
+                    error: function () {
+                        console.error("Failed to to remove player from connected player on closing tab");
+                    }
+                });
+            });
+        </script>
+        <h2>Connected Player are:</h2>
+        <ul id="playersName" type="circle">
+        </ul>
+    </body>
+</html>

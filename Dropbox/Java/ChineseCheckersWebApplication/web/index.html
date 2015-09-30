@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<html>
+    <head>
+        <title> Сhinese Checkers Online Game</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-3.3.5-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="css/freelancer.css">
+        <!-- Link jQuery JavaScript library in order to use the $ (jQuery) method-->
+        <script src="script/jquery-2.1.4.min.js"></script>
+        <script>
+            $.ajax({
+                data: "", // no data - can be ommitted
+                url: "StartOrJoin",
+                timeout: 2000,
+                error: function () {
+                    console.error("Failed to send ajax");
+                },
+                success: function (replaceStartGameLabelResponse) {
+                    $(".col-lg-12").replaceWith(replaceStartGameLabelResponse);
+                }
+            });
+        </script>
+    </head>
+
+    <body id="page-top" class="index">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#page-top">Start Chinese Checkers</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#portfolio">rules</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#about">About</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+
+        <!-- Header -->
+        <form method="GET" action="StartOrJoin">
+            <header>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <a href ="configuration_screen.html">
+                                <img class="img-responsive" name="start" src="resources/chinese-checkers.jpg" alt="">
+                            </a>
+                            <div class="intro-text">
+                                    <span class="name" id="startGameLabel">Start Game</span>
+                                    <hr class="star-light">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </form>
+
+        <!-- rules section -->     
+        <section id="portfolio">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2>Game Rules</h2>
+                        <hr class="star-primary">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9 col-lg-offset-2">
+                        <p>
+                            The aim is to race all one's pieces into the star corner on the opposite side of the board before opponents do the same. The destination corner is called home. Each player has 10 pieces, except in games between two players when 15 are sometimes used. (On bigger star boards, 15 or 21 pieces are used.[7])
+
+                            In "hop across", the most popular variation, each player starts with their colored pieces on one of the six points or corners of the star and attempts to race them all home into the opposite corner. Players take turns moving a single piece, either by moving one step in any direction to an adjacent empty space, or by jumping in one or any number of available consecutive hops over other single pieces. A player may not combine hopping with a single-step move – a move consists of one or the other. There is no capturing in Chinese checkers, so hopped pieces remain active and in play. Turns proceed clockwise around the board.
+                        </p>
+                    </div>
+                    <div class="col-lg-9 col-lg-offset-2">
+                        <p>
+                            In the diagram, Green might move the topmost piece one space diagonally forward as shown. A hop consists of jumping over a single adjacent piece, either one's own or an opponent's, to the empty space directly beyond it in the same line of direction. Red might advance the indicated piece by a chain of three hops in a single move. It is not mandatory to make the most number of hops possible. (In some instances a player may choose to stop the jumping sequence part way in order to impede the opponent's progress, or to align pieces for planned future moves.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="success" id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2>About</h2>
+                        <hr class="star-light">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9 col-lg-offset-2">
+                        <p>The game chinese checkers was written by Leonid Barman and Yaron Landau.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

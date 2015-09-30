@@ -1,0 +1,156 @@
+.header {
+    text-align: center;
+    margin: 1em 0 0.5em 0;
+    color: #343434;
+    font-weight: normal;
+    font-family: 'Ultra', sans-serif;   
+    font-size: 36px;
+    line-height: 42px;
+    text-transform: uppercase;
+    text-shadow: 0 2px white, 0 3px #777;
+}
+
+#endTurn{
+    -moz-box-shadow:inset 0px 1px 0px 0px #fff6af;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #fff6af;
+    box-shadow:inset 0px 1px 0px 0px #fff6af;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #ffab23));
+    background:-moz-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+    background:-webkit-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+    background:-o-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+    background:-ms-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+    background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#ffab23',GradientType=0);
+    background-color:#ffec64;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #ffaa22;
+    display:inline-block;
+    cursor:pointer;
+    color:#333333;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #ffee66;
+}
+#endTurn:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64));
+    background:-moz-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+    background:-webkit-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+    background:-o-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+    background:-ms-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+    background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64',GradientType=0);
+    background-color:#ffab23;
+}
+#endTurn:active {
+    position:relative;
+    top:1px;
+}
+
+
+#ConnectedPlayersNames{
+    float: left;
+    margin-left: 20px;
+    margin-top: 50px;
+}
+#StartID{
+    text-align: center; 
+    float: right;
+}
+
+#playerName{
+    height: 35px;
+}
+
+#icon{
+    width: 30px;
+    height: 30px;
+}
+
+#door{
+    float: right;
+    margin-top: 550px;
+    margin-right: 20px;
+}
+
+td.currentPlayer{
+    background-color: #ff4411;
+    font-weight: bold;
+    -webkit-transform: translateY(-8px);
+}
+
+button.Black{
+    background-color:Black;
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    cursor: pointer;
+}
+
+button.Red{
+    background-color:red;
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    cursor: pointer;
+}
+
+button.Green{
+    background-color: green;
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    cursor: pointer;
+}
+
+button.Blue{
+    background-color:blue;
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    cursor: pointer;
+}
+
+button.Yellow{
+    background-color:yellow;
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    cursor: pointer;
+}
+
+button.White{
+    background-color:white;
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    cursor: pointer;
+
+}
+
+button.Empty{
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    cursor: pointer;
+}
+
+button.legalMove{
+    background-color:cyan;
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    cursor: pointer;
+}
+
+button.white_space{
+    background-color: transparent;
+    border: transparent;
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+}

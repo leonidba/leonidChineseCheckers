@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Game</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/ourCSS.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="script/jquery-2.1.4.min.js"></script>
+        <script src="script/game_manager_screen.js"></script>
+    </head>
+    <body background="resources/backgroundwood.png">
+        <script>
+            $(function ()
+            {
+                CreatePlayers();
+                DrawBoard();
+            });
+        </script> 
+        <img src="resources/Door_Close.png" id="door" alt="door" width="120" height="160" align="right" onclick="quitGame()" onmouseover="this.src = 'resources/Door_Open.png'" onmouseout="this.src = 'resources/Door_Close.png'">
+        <h1 id="StartID">Game!!</h1>
+
+        <button type="submit" id="endTurn" onclick="endTurn()">end turn</button>
+        <table id="ConnectedPlayersNames" data-toggle="table">
+
+        </table>
+
+    </body>
+</html>

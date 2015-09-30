@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Join Game</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap-combobox.css">
+        <link rel="stylesheet" href="css/ourCSS.css">
+        <link rel="stylesheet" href="css/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-3.3.5-dist/css/bootstrap-theme.css">
+        <link rel="stylesheet" href="css/bootstrap-3.3.5-dist/css/bootstrap-theme.min.css">
+        <script src="script/jquery-2.1.4.min.js"></script>        
+
+    </head>
+    <body background="resources/backgroundwood.png">
+        <header>
+            <h1 class="header">Join Game</h1>
+        </header>
+        <script>
+            var toScreen = "out";
+            function checkName() {
+                var funcCheckName = "checkName";
+                var player_name = document.getElementById("player_name").value;
+                $.ajax({
+                    data: "funcName=" + funcCheckName + "&nameToCheck=" + player_name,
+                    url: "WaitingRoomServlet",
+                    timeout: 2000,
+                    error: function () {
+                        console.error("Failed to send ajax");
+                    },
+                    success: function (isLegalName) {
+                        if (isLegalName === "false")
+                        {
+                            $("#errorLabel").text("The name: \"" + player_name + "\" is already taken. Please choose another one.");
+                        }
+                        else
+                        {
+                            toScreen = "waiting_room";
+                            window.location.href = "waiting_room_screen.html";
+                        }
+                    }
+                });
+            }
+
+            $(window).unload(function () {
+                var funcName = "removeFromConnectedPlayers";
+                jQuery.ajax({
+                    data: "funcName=" + funcName + "&fromScreen=" + "joiner_screen" + "&toScreen=" + toScreen,
+                    async: false,
+                    url: "GameManagerServlet",
+                    timeout: 2000,
+                    error: function () {
+                        console.error("Failed to to remove player from connected player on closing tab");
+                    }
+                });
+            });
+        </script> 
+
+        <!-- user text box -->
+        <div class="form-group">
+            <fieldset>
+                <legend>Join to an existing name</legend>
+                <label class="col-xs-3 control-label">Please enter your name:</label>
+                <div class="input-group col-xs-offset-3">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-user">
+                        </span> 
+                    </span>
+                    <input type="text" placeholder="Username" name="player_name" id="player_name">
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-5 col-xs-offset-3">
+                <input type="submit" class="btn btn-default" value="Join Game" name="join_game_button" id="joinBtn" onclick="checkName()"/> 
+                <label id="errorLabel" style="color: red; font: bold"></label>
+            </div>
+        </div>     
+    </body>
+</html>
