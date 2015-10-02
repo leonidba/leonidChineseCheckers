@@ -20,8 +20,6 @@ import applicationLogic.enums.PlayerTypeEnum;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Timer;
-import java.util.function.Predicate;
 
 /**
  *
@@ -90,15 +88,16 @@ public class GameManagerServlet extends HttpServlet
                     removePlayerOnClosingBrowser(request);
                     break;
                 case "getCurrentPlayer":
-                    Gson gson = new Gson();
-                    String PlayerResponse = gson.toJson(model.getCurrentPlayer());
-                    out.print(PlayerResponse);
+                    out.print(new Gson().toJson(model.getCurrentPlayer()));
                     break;
                 case "endTurn":
                     handleEndTurn();
                     break;
                 case "getPlayers":
                     getPlayers(request, out);
+                    break;
+                case "isGameOver":
+                    out.print(new Gson().toJson(model.isGameOver()));
                     break;
             }
         }
@@ -243,8 +242,6 @@ public class GameManagerServlet extends HttpServlet
     {
         while (model.getCurrentPlayer().getPlayerType() == PlayerTypeEnum.Computer && !model.isGameOver()) // to support few computers playing 
         {
-            //ButtonEndTurn.setVisible(false);
-            //menuBar.setDisable(true);
             model.computerAImovement();
             if (model.isGameOver())
             {
@@ -252,10 +249,8 @@ public class GameManagerServlet extends HttpServlet
             } else
             {
                 model.switchTurnToNextPlayer();
-                //Platform.runLater(() -> setCurrentPlayerLabel());
             }
         }
-        //menuBar.setDisable(false);
     }
 
     private void getBoard(PrintWriter out)

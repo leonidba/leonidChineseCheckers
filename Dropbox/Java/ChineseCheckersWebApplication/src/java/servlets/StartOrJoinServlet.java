@@ -43,29 +43,30 @@ public class StartOrJoinServlet extends HttpServlet
         {
             if (WaitingRoomServlet.getNumOfConnectedPlayers() == 0)
             {
-                out.println("<a href =\"configuration_screen.html\">");
-                out.println("<img class =\"img-responsive\" name=\"start\" src=\"resources/chinese-checkers.jpg\" alt=\"\">");
-                out.println("</a>");
-                out.println("<div class=\"intro-text\">");
-                out.println("<span class=\"name\" id=\"startGameLabel\" >Start Game</span>");
+                  out.println("<button type=\"submit\" id=\"startOrJoinButton\" onclick=\"StratGame()\"> Start New Game</button>");
+//                out.println("<a href =\"configuration_screen.html\">");
+//                out.println("<img class =\"img-responsive\" name=\"start\" src=\"resources/chinese-checkers.jpg\" alt=\"\">");
+//                out.println("</a>");
+//                out.println("<div class=\"intro-text\">");
+//                out.println("<span class=\"name\" id=\"startGameLabel\" >Start Game</span>");
             }
             else
             {
                 if (canJoin())
                 {
-                    out.println("<a href =\"joiner_screen.html\">");
+                    out.println("<button type=\"submit\" id=\"startOrJoinButton\" onclick=\"JoinGame()\"> Join Game</button>");
                 }
                 else
                 {
-                    out.println("<a href =\"cant_join_screen.html\">");
+                    out.println("<button type=\"submit\" id=\"startOrJoinButton\" onclick=\"CantJoinGame()\"> Join Game</button>");
                 }
-                out.println("<img class =\"img-responsive\"  name=\"join\" src=\"resources/chinese-checkers.jpg\" alt=\"\">");
-                out.println("</a>");
-                out.println("<div class=\"intro-text\">");
-                out.println("<span class=\"name\" id=\"startGameLabel\">Join Game</span>");
+//                out.println("<img class =\"img-responsive\"  name=\"join\" src=\"resources/chinese-checkers.jpg\" alt=\"\">");
+//                out.println("</a>");
+//                out.println("<div class=\"intro-text\">");
+//                out.println("<span class=\"name\" id=\"startGameLabel\">Join Game</span>");
             }
-            out.println("<hr class=\"star-light\">");
-            out.println("</div>");
+//            out.println("<hr class=\"star-light\">");
+//            out.println("</div>");
         }
     }
 
